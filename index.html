@@ -5,9 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/x-icon" href="./img/to-do.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Lista de Tarefas</title>
 </head>
 <body>
-    
+    <div class="todo-container">
+        <header>
+            <h1>Lista de Tarefas</h1>
+        </header>
+            <form id="todo-form">
+                <p>Adicione uma tarefa:</p>
+                <div class="form-control">
+                    <input type="text" id="todo-input" placeholder="Tarefa à Fazer...">
+                    <button type="submit">
+                        <i class="fa-thin fa-plus"></i>
+                    </button>
+                </div>
+            </form>
+            <form id="edit-form">
+                <p>Edite a sua tarefa:</p>
+                <div class="form-control">
+                    <input type="text" id="edit-input">
+                    <button>
+                        <i class="fa-solid fa-check-double"></i>
+                    </button>
+                </div>
+                <button id="cancel-edit-btn">Cancelar</button>
+            </form>
+            <div id="toolbar">
+                <div id="search">
+                    <h4>Pesquisar:</h4>
+                    <form>
+                        <input type="text" id="search-input" placeholder="Buscar"/>
+                        <button id="erase-button">
+                            <i class="fa-solid fa-delete-left"></i>
+                        </button>
+                    </form>
+                </div>
+                <div id="filter">
+                    
+                </div>
+            </div>
+    </div>
 </body>
 </html>
