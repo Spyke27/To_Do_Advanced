@@ -68,7 +68,23 @@ const saveTodo = (text, done = 0, save = 1) => {
     })
   };
 
-// Eventos
+  // Function Search for Notes
+  const getSearchTodos = (search) => {
+    const todos = document.querySelectorAll(".todo");
+
+    todos.forEach((todo) => {
+        let todoTitle = todo.querySelector("h3").innerText.toLowerCase();
+        const searchLowerCase = search.toLowerCase();
+
+        todo.style.display = "flex";
+
+        if(!todoTitle.includes(searchLowerCase)){
+          todo.style.display = "none";
+        }
+    })
+  }
+
+// Eventos ----------------------------------------------------------------------
 
 //Event Add new Note
 
@@ -130,3 +146,9 @@ todoForm.addEventListener("submit", (e) => {
 
     toggleForms();
   });
+
+  searchInput.addEventListener("keyup", (e) => {
+    const search = e.target.value;
+
+    getSearchTodos(search);
+  })
