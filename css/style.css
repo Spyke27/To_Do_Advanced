@@ -90,9 +90,6 @@
     opacity: .8;
     border-radius: 15px;
   }
-  #todo-input{
-    width: 100%;
-  }
   .todo-container header {
     text-align: center;
     padding: 0 1rem 1rem;
@@ -114,6 +111,9 @@
   
   .form-control {
     display: flex;
+  }
+  .form-control i{
+    margin: -2px 5px;
   }
   
   .form-control input {
