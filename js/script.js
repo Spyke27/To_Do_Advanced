@@ -14,6 +14,7 @@ let oldInputValue;
 
 // Functions
 
+// Function to save note
 const saveTodo = (text, done = 0, save = 1) => {
     const todo = document.createElement("div");
     todo.classList.add("todo");
