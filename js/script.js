@@ -10,6 +10,8 @@ const searchInput = document.querySelector("#search-input");
 const eraseBtn = document.querySelector("#erase-button");
 const filterBtn = document.querySelector("#filter-select");
 
+let oldInputValue;
+
 // Functions
 
 const saveTodo = (text, done = 0, save = 1) => {
@@ -38,6 +40,26 @@ const saveTodo = (text, done = 0, save = 1) => {
     todoList.appendChild(todo);
   
     todoInput.value = "";
+
+    todoInput.focus();
+  };
+
+  const toggleForms = () => {
+    editForm.classList.toggle("hide")
+    todoForm.classList.toggle("hide")
+    todoList.classList.toggle("hide")
+  };
+
+  const updateTodo = (text) => {
+    const todos = document.querySelectorAll(".todo");
+
+    todos.forEach((todo) => {
+        let todoTitle = todo.querySelector("h3");
+
+        if(todoTitle.innerText == oldInputValue){
+            todoTitle.innerText = text;
+        }
+    })
   };
 
 // Eventos
@@ -50,4 +72,47 @@ todoForm.addEventListener("submit", (e) => {
     if (inputValue) {
       saveTodo(inputValue);
     }
+  });
+
+  document.addEventListener("click", (e)=> {
+    const targetElement = e.target;
+    const parentElement = targetElement.closest("div");
+    let todoTitle;
+
+    if(parentElement && parentElement.querySelector("h3")){
+        todoTitle = parentElement.querySelector("h3").innerText;
+    }
+
+    if(targetElement.classList.contains("finish-todo")){
+        parentElement.classList.toggle("done")
+    }
+
+    if(targetElement.classList.contains("edit-todo")){
+        toggleForms();
+
+        editInput.value = todoTitle;
+        oldInputValue = todoTitle;
+    }
+
+    if(targetElement.classList.contains("remove-todo")){
+        parentElement.remove();
+    }
+  });
+
+  cancelEditBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    toggleForms();
+  })
+
+  editForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const editInputValue = editInput.value;
+
+    if(editInputValue){
+        updateTodo(editInputValue);
+    }
+
+    toggleForms();
   });
