@@ -3,18 +3,17 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Verdana;
+    font-family: Helvetica, sans-serif;
     color: #333;
   }
   h1{
     color: #006584;
   }
   body {
-    background-image: url("../img/bg1.jpg");
+    background-image: url("../img/bg2.jpg");
     background-position: center;
     background-size: cover;
   }
-  
   button {
     background-color: #fdfdfd;
     color: #006584;
@@ -52,6 +51,34 @@
   .hide {
     display: none;
   }
+
+  .container-cab{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    background-color: #AC84E4;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .menu{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .menu span{
+    width: 40px;
+    height: 5px;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    background-color: #333;
+  }
+  .logo{
+    font-weight: bold;
+    color: #333;
+    font-size: 50px;
+    font-family: 'Lobster', cursive;
+  }
   
   /* Todo Header */
   .todo-container {
@@ -59,7 +86,7 @@
     margin: 3rem auto 0;
     background-color: #fdfdfd;
     padding: 1.5rem;
-    opacity: .9;
+    opacity: .8;
     border-radius: 15px;
   }
   
