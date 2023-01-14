@@ -134,7 +134,6 @@ todoForm.addEventListener("submit", (e) => {
   })
 
   // Event to Edit Notes
-
   editForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -152,3 +151,11 @@ todoForm.addEventListener("submit", (e) => {
 
     getSearchTodos(search);
   })
+  //Erase Search Input
+  eraseBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    searchInput.value = "";
+
+    searchInput.dispatchEvent(new Event("keyup"));
+  });
