@@ -15,6 +15,7 @@ let oldInputValue;
 // Functions
 
 // Function to save note
+
 const saveTodo = (text, done = 0, save = 1) => {
     const todo = document.createElement("div");
     todo.classList.add("todo");
@@ -45,11 +46,15 @@ const saveTodo = (text, done = 0, save = 1) => {
     todoInput.focus();
   };
 
+  // Function Hide 
+
   const toggleForms = () => {
     editForm.classList.toggle("hide")
     todoForm.classList.toggle("hide")
     todoList.classList.toggle("hide")
   };
+
+  // Function Update Notes
 
   const updateTodo = (text) => {
     const todos = document.querySelectorAll(".todo");
@@ -65,6 +70,8 @@ const saveTodo = (text, done = 0, save = 1) => {
 
 // Eventos
 
+//Event Add new Note
+
 todoForm.addEventListener("submit", (e) => {
     e.preventDefault();
   
@@ -75,36 +82,42 @@ todoForm.addEventListener("submit", (e) => {
     }
   });
 
+  //Event Update Notes
+
   document.addEventListener("click", (e)=> {
     const targetElement = e.target;
     const parentElement = targetElement.closest("div");
     let todoTitle;
-
+        // Verification New Note Title 
     if(parentElement && parentElement.querySelector("h3")){
         todoTitle = parentElement.querySelector("h3").innerText;
     }
-
+        // Add Notes
     if(targetElement.classList.contains("finish-todo")){
         parentElement.classList.toggle("done")
     }
-
+        // Edit Notes
     if(targetElement.classList.contains("edit-todo")){
         toggleForms();
 
         editInput.value = todoTitle;
         oldInputValue = todoTitle;
     }
-
+        // Delete Notes
     if(targetElement.classList.contains("remove-todo")){
         parentElement.remove();
     }
   });
+
+  // Event Cancel Editions
 
   cancelEditBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
     toggleForms();
   })
+
+  // Event to Edit Notes
 
   editForm.addEventListener("submit", (e) => {
     e.preventDefault();
