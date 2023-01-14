@@ -52,7 +52,7 @@
     display: none;
     transition: .5s;
   }
-
+/* Cabeçalho */
   .container-cab{
     display: flex;
     justify-content: space-between;
@@ -90,7 +90,9 @@
     opacity: .8;
     border-radius: 15px;
   }
-  
+  #todo-input{
+    width: 100%;
+  }
   .todo-container header {
     text-align: center;
     padding: 0 1rem 1rem;
