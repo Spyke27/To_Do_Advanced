@@ -6,12 +6,15 @@
     font-family: Helvetica, sans-serif;
     color: #333;
   }
+  html{
+    height: 100vh;
+  }
   h1{
     color: #006584;
   }
   body {
     background-image: url("../img/bg2.jpg");
-    background-position: fixed;
+    background-position: center;
     background-size: cover;
   }
   button {

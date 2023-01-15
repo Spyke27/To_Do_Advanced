@@ -82,6 +82,37 @@ const saveTodo = (text, done = 0, save = 1) => {
           todo.style.display = "none";
         }
     })
+  };
+
+  // Filter Notes
+  const filterTodos = (filterValue) => {
+    const todos = document.querySelectorAll(".todo");
+
+    switch(filterValue){
+        case "all": // deixa todos visíveis
+          todos.forEach((todo) => todo.style.display = "flex");
+          break;
+
+          case "done":
+            todos.forEach((todo) => 
+             todo.classList.contains("done") //verifica se contem a classe "done"
+             ? todo.style.display = "flex" //caso verdadeiro
+             : todo.style.display = "none" //caso falso
+             );
+            break;
+
+            case "todo":
+              todos.forEach((todo) => 
+              !todo.classList.contains("done") //verifica se NÃO contem a classe "todo"
+              ? todo.style.display = "flex"
+              : todo.style.display = "none" 
+              );
+              break;
+
+              default: 
+              break;
+    }
+
   }
 
 // Eventos ----------------------------------------------------------------------
@@ -151,11 +182,19 @@ todoForm.addEventListener("submit", (e) => {
 
     getSearchTodos(search);
   })
+
   //Erase Search Input
   eraseBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
     searchInput.value = "";
 
-    searchInput.dispatchEvent(new Event("keyup"));
+    searchInput.dispatchEvent(new Event("keyup"));// simula evento
   });
+
+// Filter List
+filterBtn.addEventListener("change", (e) => {
+  const filterValue = e.target.value;
+
+  filterTodos(filterValue);
+});
