@@ -6,16 +6,17 @@ const todoList = document.querySelector("#todo-list");
 const editForm = document.querySelector("#edit-form");
 const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
+const marcartBtn = document.querySelector(".marcar-btn");
 const searchInput = document.querySelector("#search-input");
 const eraseBtn = document.querySelector("#erase-button");
 const filterBtn = document.querySelector("#filter-select");
+const excluirtBtn = document.querySelector(".excluir-btn");
 
 let oldInputValue;
 
 // Functions
 
 // Function to save note
-
 const saveTodo = (text, done = 0, save = 1) => {
   const todo = document.createElement("div");
   todo.classList.add("todo");
@@ -168,7 +169,17 @@ document.addEventListener("click", (e) => {
 
     removeTodoLocalStorage(todoTitle);
   }
+  // Delete All Notes
+  if (targetElement.classList.contains("excluir-btn")) {
+    const todos = document.querySelectorAll(".todo");
+
+    todos.forEach((todo) => todo.parentElement.remove())
+
+    removeAllTodoLocalStorage()
+  }
+  
 });
+
 
 // Event Cancel Editions
 
@@ -245,6 +256,14 @@ const removeTodoLocalStorage = (todoText) => {
 
   localStorage.setItem("todos", JSON.stringify(filteredTodos));
 };
+// ---------
+const removeAllTodoLocalStorage = () => {
+  const todos = getTodosLocalStorage();
+
+  console.log(todos)
+
+  localStorage.clear();
+};
 
 const updateTodoStatusLocalStorage = (todoText) => {
   const todos = getTodosLocalStorage();
@@ -265,5 +284,9 @@ const updateTodoLocalStorage = (todoOldText, todoNewText) => {
 
   localStorage.setItem("todos", JSON.stringify(todos));
 };
+
+
+
+
 
 loadTodos();

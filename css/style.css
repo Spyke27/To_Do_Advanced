@@ -129,6 +129,12 @@
     background-color: #006584;
     color: #fff;
   }
+  .actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+  }
   
   /* Todo Toolbar */
   #toolbar {
