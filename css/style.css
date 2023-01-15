@@ -6,6 +6,9 @@
     font-family: Helvetica, sans-serif;
     color: #333;
   }
+  a{
+    text-decoration: none;
+  }
   html{
     height: 100vh;
   }
@@ -129,11 +132,17 @@
     background-color: #006584;
     color: #fff;
   }
+
+  /* Botões de ações */
   .actions{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1rem;
+    padding: 1rem 15px;
+  }
+  .marcar-btn,
+  .excluir-btn{
+    display: none;
   }
   
   /* Todo Toolbar */
@@ -202,4 +211,11 @@
     color: #fff;
     text-decoration: line-through;
     font-style: italic;
+  }
+
+
+  .copy{
+    margin-top: 50px;
+    text-align: center;
+    line-height: 20px;
   }

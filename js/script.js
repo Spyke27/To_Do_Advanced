@@ -6,13 +6,14 @@ const todoList = document.querySelector("#todo-list");
 const editForm = document.querySelector("#edit-form");
 const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
-const marcartBtn = document.querySelector(".marcar-btn");
 const searchInput = document.querySelector("#search-input");
 const eraseBtn = document.querySelector("#erase-button");
 const filterBtn = document.querySelector("#filter-select");
 const excluirtBtn = document.querySelector(".excluir-btn");
+const marcartBtn = document.querySelector(".marcar-btn");
 
 let oldInputValue;
+
 
 // Functions
 
@@ -64,7 +65,6 @@ const toggleForms = () => {
 };
 
 // Function Update Notes
-
 const updateTodo = (text) => {
   const todos = document.querySelectorAll(".todo");
 
@@ -138,6 +138,7 @@ todoForm.addEventListener("submit", (e) => {
   if (inputValue) {
     saveTodo(inputValue);
   }
+  verifica();
 });
 
 //Event Update Notes
@@ -179,7 +180,6 @@ document.addEventListener("click", (e) => {
   }
   
 });
-
 
 // Event Cancel Editions
 
@@ -250,19 +250,21 @@ const saveTodoLocalStorage = (todo) => {
 };
 
 const removeTodoLocalStorage = (todoText) => {
+  location.reload();
   const todos = getTodosLocalStorage();
 
   const filteredTodos = todos.filter((todo) => todo.text !== todoText);
 
   localStorage.setItem("todos", JSON.stringify(filteredTodos));
 };
-// ---------
+
 const removeAllTodoLocalStorage = () => {
   const todos = getTodosLocalStorage();
 
-  console.log(todos)
-
   localStorage.clear();
+
+    excluirtBtn.style.display = "none";
+    marcartBtn.style.display = "none";
 };
 
 const updateTodoStatusLocalStorage = (todoText) => {
@@ -270,6 +272,16 @@ const updateTodoStatusLocalStorage = (todoText) => {
 
   todos.map((todo) =>
     todo.text === todoText ? (todo.done = !todo.done) : null
+  );
+
+  localStorage.setItem("todos", JSON.stringify(todos));
+};
+// -------------
+const updateAllTodoStatusLocalStorage = () => {
+  const todos = getTodosLocalStorage();
+
+  todos.map((todo) =>
+    todo.classList.add("done")
   );
 
   localStorage.setItem("todos", JSON.stringify(todos));
@@ -286,7 +298,17 @@ const updateTodoLocalStorage = (todoOldText, todoNewText) => {
 };
 
 
+const verifica = () => {
+  const todos = getTodosLocalStorage();
+
+  const number = todos.length;
+
+  if(number > 0){
+  excluirtBtn.style.display = "flex";
+  marcartBtn.style.display = "flex";
+  }
+};
 
 
-
+verifica();
 loadTodos();
